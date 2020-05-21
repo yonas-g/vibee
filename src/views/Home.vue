@@ -7,7 +7,7 @@
             <input
                 v-model="searchKey"
                 @keyup.enter="searchMovie()"
-                class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg shadow-lg max-w-full focus:outline-none focus:shadow-outline"
+                class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg shadow-lg max-w-full focus:outline-none"
                 type="text"
                 placeholder="Search"
             />
