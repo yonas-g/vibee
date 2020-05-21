@@ -2,7 +2,7 @@
     <header class="flex justify-center items-center">
         <router-link to="/">
             <svg
-                class="md:mt-2 w-56 h-16 fill-current text-teal-600"
+                class="md:mt-2 w-56 h-16 fill-current text-teal-600 hover:text-teal-700"
                 version="1"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 1200 1200"
