@@ -1,8 +1,8 @@
 <template>
     <div>
         <Header />
-        <div class="flex w-10/12 justify-center pt-4 mx-auto text-gray-900">
-            <div class="w-1/2">
+        <div class="md:flex w-10/12 justify-center pt-4 mx-auto text-gray-900">
+            <div class="md:w-1/2">
                 <!-- poster img -->
                 <img
                     class="w-full lg:h-poster lg:px-4 object-cover object-center"
@@ -10,28 +10,24 @@
                     alt="Sunset in the mountains"
                 />
             </div>
-            <div class="w-1/2 p-6">
-                <h4 class="font-bold text-xl">
-                    {{ movie.title }}
-                </h4>
-                <p class="font-medium text-sm">
-                    {{ movie.tagline }}
-                </p>
+            <div class="md:w-1/2 p-6">
+                <h4 class="font-bold text-xl">{{ movie.title }}</h4>
+                <p class="font-medium text-sm">{{ movie.tagline }}</p>
                 <div class="mt-1 text-gray-600">
                     <span class="mr-1 text-sm">{{ movie.runtime }}min</span>
                     &bull;
                     <span class="mr-1 text-sm">
                         {{
-                            new Date(movie.release_date)
-                                .toDateString()
-                                .split(" ")[1]
+                        new Date(movie.release_date)
+                        .toDateString()
+                        .split(" ")[1]
                         }}
-                        {{ new Date(movie.release_date).getFullYear() }}</span
-                    >
+                        {{ new Date(movie.release_date).getFullYear() }}
+                    </span>
                     &bull;
-                    <span class="ml-1 text-sm">
-                        {{ movie.vote_count }} reviews</span
-                    >
+                    <span
+                        class="ml-1 text-sm"
+                    >{{ movie.vote_count }} reviews</span>
                 </div>
                 <div class="flex justify-start items-center mt-2">
                     <svg
@@ -51,9 +47,11 @@
                         />
                     </svg>
                     <div class="ml-1 text-xs">
-                        <span class="text-teal-500">{{
+                        <span class="text-teal-500">
+                            {{
                             movie.vote_average
-                        }}</span>
+                            }}
+                        </span>
                         <span class="text-gray-600">/ 10</span>
                     </div>
                 </div>
@@ -61,17 +59,14 @@
                     class="flex justify-start items-center text-sm text-gray-600 mr-2 mt-2 tracking-wide"
                 >
                     <span>Budget: {{ formattedPrice(movie.budget) }}</span>
-                    <span class="ml-2"
-                        >Revenue: {{ formattedPrice(movie.revenue) }}</span
-                    >
+                    <span class="ml-2">Revenue: {{ formattedPrice(movie.revenue) }}</span>
                 </div>
                 <div class="mt-2 flex flex-wrap">
                     <span
                         v-for="genre in movie.genres"
                         :key="genre"
                         class="inline-block px-2 py-1 leading-none bg-teal-100 text-teal-600 rounded-full font-semibold uppercase tracking-wide text-xs"
-                        >#{{ genre.name }}</span
-                    >
+                    >#{{ genre.name }}</span>
                 </div>
 
                 <p class="mt-2 text-gray-600">{{ movie.overview }}</p>
@@ -81,28 +76,22 @@
                         :href="movie.homepage"
                         target="_blank"
                         class="mr-2 text-sm text-blue-500 hover:text-blue-600"
-                        >Home page</a
-                    >
+                    >Home page</a>
                     <a
                         :href="'https://www.imdb.com/title/' + movie.imdb_id"
                         target="_blank"
                         class="mr-2 text-sm text-blue-500 hover:text-blue-600"
-                    >
-                        IMDB
-                    </a>
+                    >IMDB</a>
                 </div>
 
                 <div class="text-sm mt-2">
-                    <h4 class="text-gray-700 text-sm">
-                        Production Companies
-                    </h4>
+                    <h4 class="text-gray-700 text-sm">Production Companies</h4>
                     <div class="flex flex-wrap text-gray-700">
                         <span
                             class="px-2 mt-2 rounded-full bg-gray-200"
                             v-for="company in movie.production_companies"
                             :key="company.id"
-                            >{{ company.name }}</span
-                        >
+                        >{{ company.name }}</span>
                     </div>
                 </div>
             </div>
@@ -116,23 +105,23 @@ import Header from "../components/Header";
 export default {
     name: "Movie",
     components: {
-        Header,
+        Header
     },
     data: () => {
         return {
             imgBaseUrl: "https://image.tmdb.org/t/p/",
-            movie: {},
+            movie: {}
         };
     },
     methods: {
         formattedPrice(price) {
             const formatter = new Intl.NumberFormat("en-US", {
                 style: "currency",
-                currency: "USD",
+                currency: "USD"
             });
 
             return formatter.format(price / 100);
-        },
+        }
     },
     created() {
         console.log(this.$route.params.id);
@@ -144,7 +133,7 @@ export default {
             return this.movie.poster_path
                 ? this.imgBaseUrl + "w500" + this.movie.poster_path
                 : null;
-        },
-    },
+        }
+    }
 };
 </script>
