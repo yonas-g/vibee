@@ -124,12 +124,10 @@ export default {
         }
     },
     created() {
-        console.log(this.$route.params.id);
         this.movie = this.$store.state.movies[this.$route.params.id];
     },
     computed: {
         imgUrl() {
-            console.log(this.movie);
             return this.movie.poster_path
                 ? this.imgBaseUrl + "w500" + this.movie.poster_path
                 : null;
