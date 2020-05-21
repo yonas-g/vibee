@@ -1,8 +1,6 @@
-# VUE-Tailwind
+# Vibee
 
--   purge-css with postcss
--   vuex
--   vue-router
+a movie search app. part of the 9
 
 ## Project setup
 
