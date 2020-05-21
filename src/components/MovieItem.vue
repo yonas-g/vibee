@@ -45,9 +45,11 @@
                 >
             </div>
             <div class="mt-2">
-                <h4 class="font-semibold text-lg leading-tight truncate">
-                    {{ movie.title }}
-                </h4>
+                <router-link
+                    :to="'/movie/' + movie.id"
+                    class="font-semibold text-lg leading-tight truncate hover:text-gray-700"
+                    >{{ movie.title }}</router-link
+                >
             </div>
             <div class="mt-3 flex flex-wrap">
                 <span
@@ -75,8 +77,13 @@ export default {
     },
     methods: {
         async getGenres() {
-            let movieDetail = await api.getMovie(this.movie.id);
-
+            let movieDetail;
+            if (!this.$store.state.movies[this.movie.id]) {
+                movieDetail = await api.getMovie(this.movie.id);
+                this.$store.commit("addMovie", movieDetail);
+            } else {
+                movieDetail = this.$store.state.movies[this.movie.id];
+            }
             this.genres = movieDetail.genres.map((genre) => genre.name);
         },
     },

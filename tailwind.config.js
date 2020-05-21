@@ -6,6 +6,7 @@ module.exports = {
                 72: "18rem",
                 80: "20rem",
                 100: "25rem",
+                poster: "35rem",
             },
         },
     },
