@@ -1,5 +1,5 @@
 <template>
-    <div class="w-10/12 mx-auto min-h-screen">
+    <div class="lg:w-10/12 mx-auto min-h-screen">
         <div>
             <Logo />
         </div>
