@@ -59,7 +59,12 @@ export default {
     async mounted() {
         this.isLoading = true;
 
-        this.movies = (await api.trendingMovies()).results;
+        if (this.$store.state.movieTrending.length == 0) {
+            const res = (await api.trendingMovies()).results;
+            this.$store.commit("addMovieTrending", res);
+        }
+
+        this.movies = this.$store.state.movieTrending;
 
         this.isLoading = false;
     }
