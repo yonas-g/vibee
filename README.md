@@ -2,7 +2,7 @@
 
 a movie search app. part of the 9
 
-vibee.netlify.app
+[Vibee](https://vibee.netlify.app)
 
 ## Project setup
 
