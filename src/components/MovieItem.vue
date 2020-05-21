@@ -1,6 +1,6 @@
 <template>
     <div
-        class="max-w-xs rounded overflow-hidden shadow-lg  mx-4 mt-4 hover:shadow-xl"
+        class="max-w-xs rounded overflow-hidden shadow-lg  mx-4 mt-4 hover:shadow-2xl"
     >
         <div class="img-container">
             <img
