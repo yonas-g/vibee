@@ -4,7 +4,7 @@
     >
         <div class="img-container">
             <img
-                class="w-full"
+                class="w-full h-100 object-cover object-center"
                 :src="imgUrl != null ? imgUrl : '/default.jpg'"
                 alt="Sunset in the mountains"
             />
@@ -12,7 +12,7 @@
                 {{ movie.overview }}
             </p>
         </div>
-        <div class="px-6 py-2">
+        <div class="px-6 py-2 h-40">
             <div class="mt-2 flex items-center">
                 <svg
                     v-for="i in 10"
@@ -39,7 +39,7 @@
                     {{ movie.title }}
                 </h4>
             </div>
-            <div class="mt-2 flex flex-wrap">
+            <div class="mt-2 flex flex-wrap mt-auto">
                 <span
                     v-for="genre in genres"
                     :key="genre"
