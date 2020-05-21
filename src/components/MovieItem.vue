@@ -6,7 +6,7 @@
                 :src="imgUrl != null ? imgUrl : '/default.jpg'"
                 alt="Sunset in the mountains"
             />
-            <p class="overlay text-white text-base">{{ movie.overview }}</p>
+            <p class="overlay text-white text-sm">{{ movie.overview }}</p>
         </div>
         <div class="px-6 py-2 md:h-40 text-gray-600">
             <div class="mt-2 flex items-center">
