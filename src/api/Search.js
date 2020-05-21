@@ -1,8 +1,7 @@
 import axios from "axios";
 
-const api_key =
-    process.env.VUE_APP_MOVIEDB_APIKEY || "3ddbface60d68ded041ed3f97afac5c4";
-const URL = `https://api.themoviedb.org/3`;
+const api_key = process.env.VUE_APP_MOVIEDB_APIKEY;
+const URL = process.env.URL || `https://api.themoviedb.org/3`;
 
 let apiConfigCache = null;
 
