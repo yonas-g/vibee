@@ -101,6 +101,7 @@
 
 <script>
 import Header from "../components/Header";
+import api from "../api/Search";
 
 export default {
     name: "Movie",
@@ -123,8 +124,13 @@ export default {
             return formatter.format(price / 100);
         }
     },
-    created() {
-        this.movie = this.$store.state.movies[this.$route.params.id];
+    async created() {
+        if (this.$store.state.movies[this.$route.params.id]) {
+            this.movie = this.$store.state.movies[this.$route.params.id];
+        } else {
+            this.movie = await api.getMovie(this.$route.params.id);
+            this.$store.commit("addMovie", this.movie);
+        }
     },
     computed: {
         imgUrl() {
