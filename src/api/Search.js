@@ -6,6 +6,14 @@ const URL = `https://api.themoviedb.org/3`;
 
 let apiConfigCache = null;
 
+const trendingMovies = async () => {
+    let path = `${URL}/trending/movie/day?api_key=${api_key}`;
+
+    const response = await axios.get(path);
+
+    return response.data;
+};
+
 const searchMovie = async (text) => {
     let path = `${URL}/search/movie?api_key=${api_key}&query=${text}`;
 
@@ -34,4 +42,4 @@ const apiConfig = async () => {
     return apiConfigCache;
 };
 
-export default { searchMovie, apiConfig, getMovie };
+export default { searchMovie, apiConfig, getMovie, trendingMovies };

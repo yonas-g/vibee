@@ -7,14 +7,21 @@
             <input
                 v-model="searchKey"
                 @keyup.enter="searchMovie()"
-                class="px-4 py-2 border border-gray-300  rounded-lg shadow-lg max-w-full focus:outline-none focus:shadow-outline"
+                class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg shadow-lg max-w-full focus:outline-none focus:shadow-outline"
                 type="text"
                 placeholder="Search"
             />
         </div>
         <div class="flex flex-wrap items-center justify-center mt-4 mx-auto">
-            <div v-for="movie in movies" :key="movie.id">
+            <div
+                :class="isLoading ? 'hidden' : 'inline-block'"
+                v-for="movie in movies"
+                :key="movie.id"
+            >
                 <MovieItem :movie="movie" />
+            </div>
+            <div :class="isLoading ? 'inline-block' : 'hidden'">
+                <img src="/loading.gif" alt="trending" />
             </div>
         </div>
     </div>
@@ -22,7 +29,6 @@
 
 <script>
 import api from "../api/Search";
-
 import Logo from "../components/Logo";
 import MovieItem from "../components/MovieItem";
 
@@ -30,19 +36,32 @@ export default {
     name: "Home",
     components: {
         MovieItem,
-        Logo,
+        Logo
     },
     data: () => {
         return {
             searchKey: "",
-            movies: [],
+            isLoading: true,
+            movies: []
         };
     },
     methods: {
         async searchMovie() {
+            this.isLoading = true;
+
             let res = await api.searchMovie(this.searchKey);
+
             this.movies = res.results;
-        },
+
+            this.isLoading = false;
+        }
     },
+    async mounted() {
+        this.isLoading = true;
+
+        this.movies = (await api.trendingMovies()).results;
+
+        this.isLoading = false;
+    }
 };
 </script>

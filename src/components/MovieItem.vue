@@ -1,18 +1,14 @@
 <template>
-    <div
-        class="max-w-xs rounded overflow-hidden shadow-lg  mx-4 mt-4 hover:shadow-2xl"
-    >
+    <div class="max-w-xs rounded overflow-hidden shadow-lg mx-4 mt-4 hover:shadow-2xl">
         <div class="img-container">
             <img
                 class="w-full h-100 object-cover object-center"
                 :src="imgUrl != null ? imgUrl : '/default.jpg'"
                 alt="Sunset in the mountains"
             />
-            <p class="overlay text-white text-base">
-                {{ movie.overview }}
-            </p>
+            <p class="overlay text-white text-base">{{ movie.overview }}</p>
         </div>
-        <div class="px-6 py-2 h-40 text-gray-600">
+        <div class="px-6 py-2 md:h-40 text-gray-600">
             <div class="mt-2 flex items-center">
                 <svg
                     v-for="i in 10"
@@ -36,28 +32,26 @@
                 </div>
             </div>
             <div class="flex justify-start items-center">
-                <span class="mr-1 text-sm">{{
+                <span class="mr-1 text-sm">
+                    {{
                     new Date(movie.release_date).getFullYear()
-                }}</span>
+                    }}
+                </span>
                 &bull;
-                <span class="ml-1 text-sm">
-                    {{ movie.vote_count }} reviews</span
-                >
+                <span class="ml-1 text-sm">{{ movie.vote_count }} reviews</span>
             </div>
             <div class="mt-2">
                 <router-link
                     :to="'/movie/' + movie.id"
                     class="font-semibold text-lg leading-tight truncate hover:text-gray-700"
-                    >{{ movie.title }}</router-link
-                >
+                >{{ movie.title }}</router-link>
             </div>
             <div class="mt-3 flex flex-wrap">
                 <span
                     v-for="genre in genres"
                     :key="genre"
                     class="inline-block bg-gray-200 rounded-full px-3 my-1 text-xs font-semibold text-gray-600 mr-2 tracking-wide"
-                    >#{{ genre }}</span
-                >
+                >#{{ genre }}</span>
             </div>
         </div>
     </div>
@@ -72,7 +66,7 @@ export default {
     data: () => {
         return {
             imgBaseUrl: "https://image.tmdb.org/t/p/",
-            genres: [],
+            genres: []
         };
     },
     methods: {
@@ -84,8 +78,8 @@ export default {
             } else {
                 movieDetail = this.$store.state.movies[this.movie.id];
             }
-            this.genres = movieDetail.genres.map((genre) => genre.name);
-        },
+            this.genres = movieDetail.genres.map(genre => genre.name);
+        }
     },
     computed: {
         imgUrl() {
@@ -94,7 +88,7 @@ export default {
             return this.movie.poster_path
                 ? this.imgBaseUrl + "w500" + this.movie.poster_path
                 : null;
-        },
-    },
+        }
+    }
 };
 </script>
