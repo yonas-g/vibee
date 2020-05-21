@@ -49,11 +49,11 @@
                     {{ movie.title }}
                 </h4>
             </div>
-            <div class="mt-2 flex flex-wrap mt-auto">
+            <div class="mt-3 flex flex-wrap">
                 <span
                     v-for="genre in genres"
                     :key="genre"
-                    class="inline-block bg-gray-200 rounded-full px-3 my-1 text-xs font-semibold text-gray-700 mr-2"
+                    class="inline-block bg-gray-200 rounded-full px-3 my-1 text-xs font-semibold text-gray-600 mr-2 tracking-wide"
                     >#{{ genre }}</span
                 >
             </div>
