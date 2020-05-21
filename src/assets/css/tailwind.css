@@ -13,12 +13,16 @@
     color: #f1f1f1;
     width: 100%;
     max-height: 50%;
-    overflow: hidden;
+    overflow: scroll;
     transition: .5s ease;
     opacity: 0;
     color: white;
     font-size: 20px;
     padding: 20px;
+}
+
+.overlay::-webkit-scrollbar {
+    display: none;
 }
 
 .img-container:hover .overlay {
