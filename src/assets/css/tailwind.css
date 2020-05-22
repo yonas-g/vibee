@@ -1,6 +1,14 @@
 @tailwind base;
 @tailwind components;
 
+.dropdown {
+    @apply hidden;
+}
+
+.search:focus~.dropdown {
+    @apply inline-block;
+}
+
 .img-container {
     position: relative;
 }

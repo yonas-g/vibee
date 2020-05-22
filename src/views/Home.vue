@@ -8,12 +8,12 @@
                 v-model="searchKey"
                 @keyup="quickSearch"
                 @keyup.enter="searchMovie()"
-                class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg shadow-lg max-w-full focus:outline-none focus:shadow-2xl"
+                class="search md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg shadow-lg max-w-full focus:outline-none focus:shadow-2xl"
                 type="text"
                 placeholder="Search"
             />
             <div
-                class="w-11/12 md:w-1/2 my-2 overflow-y-scroll rounded-md absolute z-10"
+                class="dropdown w-11/12 md:w-1/2 my-2 overflow-y-scroll rounded-md absolute z-10"
                 style="top: 40px; margin-top: 5px; max-height:18rem;"
             >
                 <Dropdown :list="dropdownItems" />
