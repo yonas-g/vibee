@@ -5,6 +5,10 @@
     @apply hidden;
 }
 
+.dropdown:hover {
+    @apply inline-block;
+}
+
 .search:focus~.dropdown {
     @apply inline-block;
 }
